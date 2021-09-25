@@ -49,12 +49,10 @@ const generateREADME = (answers) =>
 `# ${answers.title}
 Created by ${answers.name}
 
-# Technologies Used`
-for (var i = 0; i<answers.techUsed.length; i++){
-    `- ${answers.techUsed[i]}`
-};
+# Technologies Used
+${answers.techUsed}
 
-`# Description
+# Description
 ${answers.description}
 
 # Appearance
