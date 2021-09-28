@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
+const { resourceLimits } = require('worker_threads');
 
 // create writeFile function using promises instead of a callback function
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -10,17 +11,22 @@ const promptUser = () => {
     {
       type: 'input',
       name: 'title',
-      message: 'What is the name of the project?',
+      message: 'What is the name of the app?',
     },
     {
       type: 'input',
       name: 'name',
-      message: 'Who created the app that this README is for?',
+      message: 'Who  is credited for creating the app?',
     },
     {
       type: 'input',
       name: 'techUsed',
       message: 'What technology was used in the app?',
+    },
+    {
+      type: 'input',
+      name: 'install',
+      message: 'What are the steps required to install the app?',
     },
     {
       type: 'input',
@@ -41,28 +47,41 @@ const promptUser = () => {
       type: 'input',
       name: 'contactInfo',
       message: 'What is your contact info you want included in the README?',
-    },
+    },    
   ]);
 };
 
-const generateREADME = (answers) =>
+const generateREADME = (answers) => {
+var results =
 `# ${answers.title}
 Created by ${answers.name}
 
-# Technologies Used
-${answers.techUsed}
+## Technologies Used
+`
+let techUsedArr = answers.techUsed;
+techUsedArr = techUsedArr.split(' ');
+for (var i = 0; i<techUsedArr.length; i++){
+  results += `- ${techUsedArr[i]}
+`
+}
+results += 
+`
+## Installation
+${answers.install}
 
-# Description
+## Description
 ${answers.description}
 
-# Appearance
+## Appearance
 ![Screenshot of website](${answers.link})
 
-# Known Bugs
+## Known Bugs
 ${answers.knownBugs}
 
 ## Contact info
 ${answers.contactInfo}`;
+return results;
+};
 
 
 const init = () => {

@@ -1,17 +1,18 @@
-# Test App
+# Test
 Created by Shawn Miller
 
 # Technologies Used
-JavaScript
-
+- test1
+- test2
+- test3
 # Description
-Testing if this works
+test
 
 # Appearance
 ![Screenshot of website](undefined)
 
 # Known Bugs
-None
+test
 
 ## Contact info
 shawnsmm@gmail.com
