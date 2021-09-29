@@ -6,12 +6,12 @@
 Use this app to create quick and professional README.md files
 
 ## Table of Contents
-- [Installations] (#installation)
-- [Usage] (#usage)
-- [License] (#license)
-- [Contributing] (#contribution)
-- [Tests] (#tests)
-- [Questions] (#questions)
+- [Installations](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contribution)
+- [Tests](#tests)
+- [Questions](#questions)
 
 ## Installation
 In the directory of the app use the command line and enter node index.js

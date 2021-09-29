@@ -80,12 +80,12 @@ ${licenseBadge}
 ${answers.description}
 
 ## Table of Contents
-- [Installations] (#installation)
-- [Usage] (#usage)
-- [License] (#license)
-- [Contributing] (#contribution)
-- [Tests] (#tests)
-- [Questions] (#questions)
+- [Installations](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contribution)
+- [Tests](#tests)
+- [Questions](#questions)
 
 ## Installation
 ${answers.installInstructions}
