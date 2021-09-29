@@ -62,13 +62,13 @@ const promptUser = () => {
 // insert the answers from the prompts into a const called README
 const generateREADME = (answers) => {
 if (answers.license === 'Apache'){
-  var licenseBadge = '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)]';
+  var licenseBadge = '![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)';
 } else if (answers.license === 'Boost') {
-  var licenseBadge = '[![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)]';
+  var licenseBadge = '![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)';
 } else if (answers.license === 'BSD 3-Clause') {
-  var licenseBadge = '[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)]';
+  var licenseBadge = '![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)';
 } else {
-  var licenseBadge = '[![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)]';
+  var licenseBadge = '![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)';
 }
 
   var results =
