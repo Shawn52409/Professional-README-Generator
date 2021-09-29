@@ -23,11 +23,12 @@ In the directory of the app use the command line and enter node index.js
 Boost
 
 ## Contributing
-Contribution guidelines test
+No contribution needed for current app
 
 ## Tests
-N/A
+No tests created at this time
 
 ## Questions
-GitHub Username: Shawn52409
-email address: shawnsmm@gmail.com
+GitHub username: Shawn52409
+
+Email address: shawnsmm@gmail.com

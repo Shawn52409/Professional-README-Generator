@@ -71,7 +71,7 @@ if (answers.license === 'Apache'){
   var licenseBadge = '![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)';
 }
 
-  var results =
+var results =
 `# ${answers.title}
 
 ${licenseBadge}
@@ -103,9 +103,10 @@ ${answers.contributionGuidelines}
 ${answers.testInstructions}
 
 ## Questions
-GitHub Username: ${answers.gitHubUserName}
-email address: ${answers.email}`;
+GitHub username: ${answers.gitHubUserName}
 
+Email address: ${answers.email}
+`;
 return results;
 };
 
