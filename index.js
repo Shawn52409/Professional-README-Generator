@@ -1,3 +1,4 @@
+// require inquirer, fs and util
 const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
@@ -6,6 +7,7 @@ const { resourceLimits } = require('worker_threads');
 // create writeFile function using promises instead of a callback function
 const writeFileAsync = util.promisify(fs.writeFile);
 
+// prompt the user for all the inputs of the README
 const promptUser = () => {
   return inquirer.prompt([
     {
@@ -15,78 +17,103 @@ const promptUser = () => {
     },
     {
       type: 'input',
-      name: 'name',
-      message: 'Who  is credited for creating the app?',
-    },
-    {
-      type: 'input',
-      name: 'techUsed',
-      message: 'What technology was used in the app?',
-    },
-    {
-      type: 'input',
-      name: 'install',
-      message: 'What are the steps required to install the app?',
-    },
-    {
-      type: 'input',
       name: 'description',
-      message: 'Please give a description of the function of the app.',
+      message: 'Please provide a description of the app.',
     },
     {
-        type: 'input',
-        name: 'screenshotLink',
-        message: 'Where is the location of the screenshot of the working app? (Example: ./assets/img/screenshot.jpg)',
+      type: 'input',
+      name: 'installInstructions',
+      message: 'What are the install instructions for the app.',
+    },
+    {
+      type: 'input',
+      name: 'usageInfo',
+      message: 'Please provide the usage information for this app.',
+    },
+    {
+      type: 'input',
+      name: 'contributionGuidelines',
+      message: 'Please provide the contribution guidelines for this app.',
+    },
+    {
+      type: 'input',
+      name: 'testInstructions',
+      message: 'Please provide the test instructions for this app.',
+    },
+    {
+        type: 'list',
+        name: 'license',
+        message: 'What license was used for this app?',
+        choices: ['Apache', 'Boost', 'BSD 3-Clause', 'BSD 2 Clause'],
       },    
     {
       type: 'input',
-      name: 'knownBugs',
-      message: 'What are the known bugs with the app? (Say "None" if there are none that are known)',
+      name: 'gitHubUserName',
+      message: 'What is your GitHub user name?',
     },
     {
       type: 'input',
-      name: 'contactInfo',
-      message: 'What is your contact info you want included in the README?',
+      name: 'email',
+      message: 'What is your email?',
     },    
   ]);
 };
 
+// insert the answers from the prompts into a const called README
 const generateREADME = (answers) => {
-var results =
-`# ${answers.title}
-Created by ${answers.name}
-
-## Technologies Used
-`
-let techUsedArr = answers.techUsed;
-techUsedArr = techUsedArr.split(' ');
-for (var i = 0; i<techUsedArr.length; i++){
-  results += `- ${techUsedArr[i]}
-`
+if (answers.license === 'Apache'){
+  var licenseBadge = '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)]';
+} else if (answers.license === 'Boost') {
+  var licenseBadge = '[![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)]';
+} else if (answers.license === 'BSD 3-Clause') {
+  var licenseBadge = '[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)]';
+} else {
+  var licenseBadge = '[![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)]';
 }
-results += 
-`
-## Installation
-${answers.install}
+
+  var results =
+`# ${answers.title}
+
+${licenseBadge}
 
 ## Description
 ${answers.description}
 
-## Appearance
-![Screenshot of website](${answers.link})
+## Table of Contents
+- [Installations] (#installation)
+- [Usage] (#usage)
+- [License] (#license)
+- [Contributing] (#contribution)
+- [Tests] (#tests)
+- [Questions] (#questions)
 
-## Known Bugs
-${answers.knownBugs}
+## Installation
+${answers.installInstructions}
 
-## Contact info
-${answers.contactInfo}`;
+## Usage
+${answers.usageInfo}
+
+## License
+${answers.license}
+
+## Contributing
+${answers.contributionGuidelines}
+
+## Tests
+${answers.testInstructions}
+
+## Questions
+GitHub Username: ${answers.gitHubUserName}
+email address: ${answers.email}`;
+
 return results;
 };
 
 
 const init = () => {
   promptUser()
-    .then((answers) => writeFileAsync('README.md', generateREADME(answers)))
+    // use the aswers to create the README file
+    .then((answers) => writeFileAsync('./dist/README.md', generateREADME(answers)))
     .then(() => console.log('Successfully wrote README.md'))
     .catch((err) => console.error(err));
 };
