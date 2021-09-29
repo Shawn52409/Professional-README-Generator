@@ -7,10 +7,12 @@ Created by Shawn Miller
 - JavaScript
 
 # Description
-This app was used to create Professional README.md file after creating professional apps.
+This app is used to create Professional README.md file that can be used after a user has created a professional app. To use this app a user must first run install node.js and run a npm install. The user can then run node index.js at the command terminal. The terminal will prompt you with all the questions needed to create a README.md file and the file will be saved to the 'dist' folder after all the questions are answered.
+
+Please note: This is not the README file that was created by the app. The README.md file created by the app is in the dist folder.
 
 # Appearance
-![Screenshot of website](./assets/img/screenshot.jpg)
+![Screenshot of README and command line](./assets/img/screenshot.jpg)
 
 # Known Bugs
 No known bugs.
